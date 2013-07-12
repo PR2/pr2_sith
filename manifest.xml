@@ -1,0 +1,21 @@
+<package>
+  <description brief="Make the PR2 use a lightsaber">
+    An extension of the PR2 props demo, but instead of high fives, the PR2 swings a lightsaber until it detects an impact. 
+  </description>
+  <author>David V. Lu!!</author>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/pr2_sith</url>
+  <depend package="rospy"/>
+  <depend package="actionlib"/>
+  <depend package="pr2_controllers_msgs"/>
+  <depend package="pr2_gripper_sensor_action"/>
+  <depend package="pr2_gripper_sensor_controller"/>
+  <depend package="pr2_gripper_sensor_msgs"/>
+  <depend package="pr2_precise_trajectory"/>
+  <depend package="sensor_msgs"/>
+  <depend package="joy"/>
+  <depend package="resource_retriever"/>
+  <depend package="dynamic_reconfigure"/>
+</package>
+
+
