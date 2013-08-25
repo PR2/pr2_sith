@@ -13,7 +13,6 @@
   <depend package="pr2_gripper_sensor_msgs"/>
   <depend package="pr2_precise_trajectory"/>
   <depend package="sensor_msgs"/>
-  <depend package="resource_retriever"/>
   <depend package="dynamic_reconfigure"/>
 </package>
 

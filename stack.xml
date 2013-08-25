@@ -11,7 +11,6 @@
   <depend stack="dynamic_reconfigure"/>
   <depend stack="ros_comm" /> <!-- rospy -->
   <depend stack="common_msgs" /> <!-- sensor_msgs -->
-  <depend stack="robot_model" /> <!-- resource_retriever -->
   <depend stack="pr2_controllers" /> <!-- pr2_controllers_msgs -->
   <depend stack="pr2_object_manipulation" /> <!-- pr2_gripper_sensor_action, pr2_gripper_sensor_controller, pr2_gripper_sensor_msgs -->
 </stack>

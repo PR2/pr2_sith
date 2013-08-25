@@ -6,10 +6,38 @@ from pr2_precise_trajectory.full_controller import FullPr2Controller, OPEN, CLOS
 import sys
 import yaml
 import random
-from resource_retriever.retriever import get
+import subprocess
+import urlgrabber, string
 
 from dynamic_reconfigure.server import Server
 from pr2_sith.cfg import TheForceConfig
+
+PACKAGE_PREFIX = 'package://'
+
+def rospack_find(package):
+    process = subprocess.Popen(['rospack', 'find', package], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    (stdout, stderr) = process.communicate()
+    if len(stderr) > 0:
+        raise Exception(stderr)
+    else:
+        return string.strip(stdout)
+
+def get(url):
+    mod_url = url
+    if url.find(PACKAGE_PREFIX) == 0:
+        mod_url = url[len(PACKAGE_PREFIX):]
+        pos = mod_url.find('/')
+        if pos == -1:
+            raise Exception("Could not parse package:// format into file:// format for "+url)
+
+        package = mod_url[0:pos]
+        mod_url = mod_url[pos:]
+        package_path = rospack_find(package)
+
+        mod_url = "file://" + package_path + mod_url;
+
+    return urlgrabber.urlopen(mod_url) 
+
 
 class Duel:
     def __init__(self):
