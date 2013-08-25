@@ -103,3 +103,6 @@ if __name__ == '__main__':
         move = random.choice(moves)
         duel.move_arm( move )
 
+    # drop the lightsaber when we're done
+    duel.controller.hands[RIGHT_HAND].change_position(OPEN)
+
