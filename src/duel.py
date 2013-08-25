@@ -46,6 +46,7 @@ class Duel:
         self.back_time = 0.8
         self.controller = FullPr2Controller([RIGHT, RIGHT_HAND])
         self.srv = Server(TheForceConfig, self.callback)
+        rospy.on_shutdown(self.done)
 
     def move_arm(self, move):
         move[0][TIME] = self.forward_time
@@ -70,6 +71,11 @@ class Duel:
         self.controller.acceleration_trigger = config.acceleration_trigger
         self.controller.slip_trigger = config.slip_trigger
         return config
+
+    def done(self):
+        # drop the lightsaber when we're done
+        self.controller.hands[RIGHT_HAND].change_position(OPEN)
+        
 
 if __name__ == '__main__':
     starts = []
@@ -102,7 +108,3 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         move = random.choice(moves)
         duel.move_arm( move )
-
-    # drop the lightsaber when we're done
-    duel.controller.hands[RIGHT_HAND].change_position(OPEN)
-
