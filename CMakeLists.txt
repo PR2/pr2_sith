@@ -20,4 +20,4 @@ rosbuild_find_ros_package(dynamic_reconfigure)
 include(${dynamic_reconfigure_PACKAGE_PATH}/cmake/cfgbuild.cmake)
 gencfg()
 
-rosbuild_make_distribution(0.1.0)
+rosbuild_make_distribution(0.1.1)
