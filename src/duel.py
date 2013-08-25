@@ -5,6 +5,7 @@ from pr2_precise_trajectory import *
 from pr2_precise_trajectory.full_controller import FullPr2Controller, OPEN, CLOSED
 import sys
 import yaml
+import copy
 import random
 import subprocess
 import urlgrabber, string
@@ -94,8 +95,8 @@ if __name__ == '__main__':
         if sys.argv[1]=='--setup':
             duel.setup(starts[0])
         if sys.argv[1]=='--autosetup':
-            auto = dict(starts[0])
-            auto['transition'] = 'impact'
+            auto = copy.deepcopy(starts[0])
+            auto[0]['transition'] = 'impact'
             duel.autosetup(auto)
 
     while not rospy.is_shutdown():

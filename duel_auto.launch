@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find pr2_sith)/duel_core.launch" />
+  <node name="duel" type="duel.py" pkg="pr2_sith" output="screen" args="--autosetup"/>
+</launch>
+
