@@ -57,6 +57,11 @@ class Duel:
         raw_input('Press enter to close grip\n')
         self.controller.hands[RIGHT_HAND].change_position(CLOSED)
 
+    def autosetup(self, start):
+        self.controller.hands[RIGHT_HAND].change_position(OPEN)
+        self.controller.do_action(start)
+        self.controller.hands[RIGHT_HAND].change_position(CLOSED)
+
     def callback(self, config, level):
         self.forward_time = config.forward_time
         self.back_time = config.back_time
@@ -88,6 +93,10 @@ if __name__ == '__main__':
     if len(sys.argv)>1:
         if sys.argv[1]=='--setup':
             duel.setup(starts[0])
+        if sys.argv[1]=='--autosetup':
+            auto = dict(starts[0])
+            auto['transition'] = 'impact'
+            duel.autosetup(auto)
 
     while not rospy.is_shutdown():
         move = random.choice(moves)
