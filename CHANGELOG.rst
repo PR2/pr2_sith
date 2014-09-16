@@ -2,8 +2,8 @@
 Changelog for package pr2_sith
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2014-09-16)
+------------------
 * Fixed Dynamic Reconfigure in CMake for Hydro
 * Added package.xml
 * Removed unecc file
