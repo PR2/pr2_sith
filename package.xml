@@ -1,6 +1,6 @@
 <package>
   <name>pr2_sith</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>An extension of the PR2 props demo, but instead of high fives, the PR2 swings a lightsaber until it detects an impact.</description>
   <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
 
