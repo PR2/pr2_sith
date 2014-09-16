@@ -1,23 +1,17 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(pr2_sith)
+find_package(catkin REQUIRED COMPONENTS rospy actionlib pr2_controllers_msgs pr2_gripper_sensor_action pr2_gripper_sensor_controller pr2_gripper_sensor_msgs pr2_precise_trajectory sensor_msgs dynamic_reconfigure)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
+generate_dynamic_reconfigure_options(cfg/TheForce.cfg)
 
-rosbuild_init()
+catkin_package(
+    DEPENDS rospy actionlib pr2_controllers_msgs pr2_gripper_sensor_action pr2_gripper_sensor_controller pr2_gripper_sensor_msgs pr2_precise_trajectory sensor_msgs dynamic_reconfigure
+    CATKIN_DEPENDS # TODO
+    INCLUDE_DIRS # TODO include
+    LIBRARIES # TODO
+)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+install(DIRECTORY cfg/ sounds/ launch/ scripts/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-rosbuild_find_ros_package(dynamic_reconfigure)
-include(${dynamic_reconfigure_PACKAGE_PATH}/cmake/cfgbuild.cmake)
-gencfg()
+install(FILES duel_auto.launch duel_core.launch duel_no_setup.launch duel_with_setup.launch pr2_sith.app pr2_sith.interface pr2_sith.png DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-rosbuild_make_distribution(0.1.2)
