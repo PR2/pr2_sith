@@ -2,8 +2,8 @@
 Changelog for package pr2_sith
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2014-10-15)
+------------------
 * Updated CMakeLists to pass catkin_make install
 * Contributors: TheDash
 
