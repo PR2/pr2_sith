@@ -11,7 +11,7 @@ catkin_package(
     LIBRARIES # TODO
 )
 
-install(DIRECTORY cfg/ sounds/ launch/ scripts/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY cfg/ sounds/ scripts/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 install(FILES duel_auto.launch duel_core.launch duel_no_setup.launch duel_with_setup.launch pr2_sith.app pr2_sith.interface pr2_sith.png DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
